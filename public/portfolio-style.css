@@ -1,0 +1,395 @@
+/*Custom colors used with root*/
+:root {
+  --main-white: #f0f0f0;
+  --main-blue: #000080;
+  --main-gray: #303841;
+  --main-green: #124429;
+  --main-black: #000001;
+  --main-blue-gray: #23395d;
+}
+
+/*base set. (should do this first so everything can be set with these already in place)*/
+* {
+  /*Effects every element unless they have a specific margin/padding*/
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  /*Without this the background would not cover entire screen when you scrolled
+			to the right. Get rid of this section to see.*/
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box; /*Without this the background would not cover entire screen 
+	when you scrolled to the right. Get rid of this section to see.
+	
+	* Want to use rem so website font will change when someone has default font-size 
+	  different (ex:  visually-impaired person who makes font bigger to help see better.)
+	  
+	
+	* We are going to set font-size percentage to make rem calculations easy throughout 
+	  the code. By default font-size = 16px = 1rem, 100% = 16px. Thus, instead of every 
+	  rem being 16px which is hard to calculate. We can do quick math to make every rem 
+	  10px which will be much easier to use through the code.
+	  
+	* (100% / 16px) * 10 = 62.5%. Now, 1rem = 10px b/c 62.5% = 10px.*/
+  font-size: 62.5%;
+  line-height: 1.4;
+}
+
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/*980px / 16px = 61.25em.*/
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/*600px / 16px = 37.5em*/
+@media (max-width: 37.5em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+/*Base styles*/
+body {
+  font-size: 1.8rem; /*18px because 1 rem = 10px due to html {font-size: percentage} */
+  color: var(--main-white);
+  font-family: "Noto Serif SC", Helvetica, sans-serif;
+  /*Note the font name mused be in quotation marks if more than one word. Used Helvetica
+	and sans-serif for back-up if a browser doesn't have the google font.*/
+}
+
+h1 {
+  font-size: 6rem; /*60px*/
+}
+
+p {
+  font-size: 4rem; /*40px*/
+  font-weight: 100;
+}
+
+a {
+  text-decoration: none; /*No line under the link.*/
+  color: var(--main-white);
+}
+
+/*Nav styles*/
+
+#navbar {
+  position: fixed;
+  top: 0; /*Top and left move the navbar to top of website*/
+  left: 0;
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  justify-content: flex-end; /*Moves all of the child containers to right.*/
+  align-items: center;
+  background-color: var(--main-blue);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+.nav-list {
+  /*Use class for <ul> and not (.nav-list li) so margin-right only effects the 
+			outside of list. Thus, all <li> 2rem from edge of screen instead of from 
+			each other.*/
+  display: flex; /*Makes list items display horizontally in a line.*/
+  list-style: none; /*Takes away dots shown for list.*/
+  margin-right: 2rem; /*Moves the words 20px(2rem = 20px) to the left so not on edge.*/
+}
+
+#navbar a {
+  display: flex; /*flex and align-center is used to vertically center the <a> items 
+					in the navbar.*/
+  align-items: center;
+  height: 8rem; /*When hover is used the background color is smooth and same as navbar.
+				Goes here and not in hover so everything stays the same except background 
+				color.*/
+  font-size: 2.2rem;
+  padding: 2rem; /*separates words*/
+}
+
+#navbar a:hover {
+  background-color: var(
+    --main-black
+  ); /*Changes background of link when hovered on it.*/
+}
+
+/*Welcome-section*/
+
+#welcome-section {
+  display: flex; /*These four flex lines center the <h1> and <p> elements in the 
+					container with id "welcome-section"*/
+  flex-direction: column; /*Makes the child elements stack vertically*/
+  justify-content: center; /*Centers items horizontally*/
+  align-items: center; /*Centers items vertically*/
+  text-align: center;
+  margin-top: 8rem; /*Used because fixed navbar height is 8rem*/
+  width: 100%;
+  height: 100vh; /*The size of the viewport (entire screen)*/
+  background: linear-gradient(
+    45deg,
+    var(--main-gray) 45%,
+    var(--main-black) 100%
+  );
+  /*Percentages show when gradients begin. Thus, 45% to 100% is in gradient.
+		The first 45% is just the gray color.*/
+}
+
+#welcome-section-header-description {
+  color: var(--main-blue);
+}
+
+/*Project-Section*/
+
+#projects {
+  /*Width and Height makes the entire projects section the size of the viewport*/
+  width: 100%;
+  height: auto;
+  padding-bottom: 5rem; /*Use padding and not margin so the background colour can cover
+							the empty space.*/
+  background: var(--main-blue-gray);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); /*gives a border to the section*/
+}
+
+.projects-header {
+  /*Could call this <h2> in the base styles.*/
+  font-size: 4.2rem;
+  padding: 1rem;
+  margin-right: auto; /*These last 4 lines are used to make border-bottom only 65rem 
+						wide. The margin-right/left:auto; is used to center it the box.*/
+  margin-left: auto;
+  max-width: 65rem;
+  border-bottom: 0.2rem solid var(--main-white);
+}
+
+@media (max-width: 37.5em) {
+  /*Makes the header stay only one line.*/
+  .projects-header {
+    font-size: 3rem;
+    max-width: 50rem; /*So border-bottom adjusts with the font-size as well.*/
+  }
+}
+
+.projects-grid {
+  display: grid; /*grid is automated depending on size due to repeat and minmax.
+					the repeat causes the grid to make as many grid slots as needed. 
+					Minmax tells us how what the minimum width and maximum of the width 
+					can be.*/
+
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  /*Made min 30 rem to be big and 1fr stands for a fractional unit and 1 part of 
+		available space. 1fr essentially fills in the entire grid-area that is left.
+		
+		The height of all grid rows are the same because I edited the images to the same
+		size on desktop with tool bar.*/
+
+  grid-gap: 5rem; /*Gives how much of a gap is between each grid.*/
+  margin: 3rem 8rem 5rem 8rem; /*Top right bottom left of the outside of grid container*/
+  justify-content: center; /*Centers the grid container*/
+}
+
+.img-projects {
+  width: 100%; /*Important because makes the image size the width of the grid-area
+				  it's in.*/
+  height: auto;
+}
+
+.project-link {
+  border: 0.3rem solid black;
+  /* Makes it to where the gap between image and project title has same background color as project title so it looks like it is all the same size and fits evenly */
+  background: var(--main-gray);
+  display: grid;
+  align-self: stretch;
+}
+
+.project-title-container {
+  display: flex;
+  width: 100%; /*Makes background the size of the container. Thus, even with images.*/
+  background: var(--main-gray);
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1.5rem;
+}
+
+.project-tile-animation {
+  color: var(--main-gray);
+}
+
+.project-link:hover .project-tile-animation {
+  /*Hover has to be .project-link. This way the animation will work when hovering over
+	image as well as the project title.
+	The project-tile-animation is needed to only color the things in the span with that 
+	class title when the entire container is being hovered on. Thus, the project-title 
+	remains white and only the special characters are changed.*/
+  animation: colorChange 0.5s ease-out forwards;
+}
+
+@keyframes colorChange {
+  100% {
+    color: var(--main-blue);
+  }
+}
+
+.button-link {
+  display: flex; /*This centers the button.*/
+  justify-content: center;
+}
+
+.button {
+  background: var(--main-gray);
+  text-align: center; /*Aligns text to center in the button container*/
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/*contact-section*/
+
+#contact-section {
+  display: flex;
+  flex-direction: column; /*Makes child elements stack up vertically.*/
+  justify-content: center; /*Centers items horizontally.*/
+  align-items: center; /*Centers items vertically.*/
+  width: 100%;
+  height: 100vh; /*Width and height here make the contact section the size of viewport*/
+  background: var(--main-gray);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7); /*gives a border to the section*/
+}
+
+#contact-section-header-description {
+  font-size: 2rem;
+}
+
+.contact-link-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.contact-link {
+  margin: 1.7rem;
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+.icon {
+  width: 2rem;
+  border-radius: 0.5rem;
+}
+
+.contact-link:hover {
+  filter: brightness(70%);
+  transform: translateY(-0.8rem); /*Moves link up 8px when hovered on.*/
+  transition: transform 0.4s ease-out; /*.4s gives time of how long transition takes.
+	Ease-out gives how fast or slow you want it to start and end the transition*/
+}
+
+/*1140 / 16 = 61.25em*/
+@media (max-width: 71.25em) {
+  .contact-link {
+    /*So contact links stay in a horizontal line equally */
+    margin: 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  .icon {
+    /*So contact links stay in a horizontal line equally */
+    width: 1.8rem;
+    border-radius: 0.5rem;
+  }
+}
+
+/*880px / 16 = 40em.*/
+@media (max-width: 55em) {
+  #contact-section-header {
+    /*So header fits this size.*/
+    font-size: 5rem;
+  }
+
+  .contact-link {
+    /*So contact links stay in a horizontal line equally */
+    margin: 1rem;
+    font-size: 1.7rem;
+  }
+
+  .icon {
+    /*So contact links stay in a horizontal line equally */
+    width: 1.2rem;
+    border-radius: 0.4rem;
+  }
+}
+
+/*768px / 16 = 48em.*/
+@media (max-width: 48em) {
+  #contact-section-header {
+    /*So header fits this size.*/
+    font-size: 5rem;
+  }
+
+  .contact-link {
+    /*So contact links stay in a horizontal line equally */
+    margin: 0.6rem;
+    font-size: 1.5rem;
+  }
+
+  .icon {
+    /*So contact links stay in a horizontal line equally */
+    width: 1.2rem;
+    border-radius: 0.4rem;
+  }
+}
+
+#suggestion {
+  margin-top: 30px;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 75%;
+}
+
+#suggestion:hover {
+  transform: translateY(-0.8rem); /*Moves link up 8px when hovered on.*/
+  transition: transform 0.4s ease-out;
+  filter: brightness(70%);
+}
+
+/*Footer section*/
+
+#footer {
+  background: var(--main-gray);
+  padding: 4rem 8rem 4rem 0rem; /*Moves footer within the contact section because 
+								   I am using padding and not margin.*/
+  border-top: 0.4rem solid var(--main-blue);
+  display: flex;
+  justify-content: flex-end; /*Use flex-end to move item to right of container.*/
+}
+
+#footer > p {
+  font-size: 1.5rem;
+}

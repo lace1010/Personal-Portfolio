@@ -1,0 +1,22 @@
+{
+	"name": "personal-portfolio",
+	"version": "0.0.1",
+	"description": "My first portfolio adding node.js",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"cors": "^2.8.0",
+		"express": "^4.17.1"
+	},
+	"keywords": [
+		"node",
+		"hyperdev",
+		"express",
+		"Hunter",
+		"Lacefield",
+		"personal portfolio"
+	],
+	"license": "MIT"
+}
