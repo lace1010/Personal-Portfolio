@@ -133,9 +133,8 @@ a {
 }
 
 #navbar a:hover {
-  background-color: var(
-    --main-black
-  ); /*Changes background of link when hovered on it.*/
+  background-color: var(--main-blue);
+  filter: brightness(70%); /*Changes background of link when hovered on it.*/
 }
 
 /*Welcome-section*/
@@ -200,7 +199,7 @@ a {
 					Minmax tells us how what the minimum width and maximum of the width 
 					can be.*/
 
-  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
   /*Made min 30 rem to be big and 1fr stands for a fractional unit and 1 part of 
 		available space. 1fr essentially fills in the entire grid-area that is left.
 		
