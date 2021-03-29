@@ -8,7 +8,12 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        "img-src": ["'self'", "https://i.ibb.co/"],
+        "img-src": [
+          "'self'",
+          "https://i.ibb.co/",
+          "data:image/png;base64,",
+          "https://upload.wikimedia.org/wikipedia/",
+        ],
       },
     },
   })
