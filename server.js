@@ -7,7 +7,7 @@ app.use(
     dnsPrefetchControl: false,
     contentSecurityPolicy: {
       directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        defaultSrc: ["'self'"],
         "img-src": ["'self'", "https://i.ibb.co/"],
       },
     },
