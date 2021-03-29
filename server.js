@@ -1,14 +1,8 @@
-// server.js
-// where your node app starts
-
-// init project
 const express = require("express");
-const app = express();
+const helmet = require("helmet");
 
-// enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// so that your API is remotely testable by FCC
-const cors = require("cors");
-app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
+const app = express();
+aapp.use(helmet({ dnsPrefetchControl: false }));
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
