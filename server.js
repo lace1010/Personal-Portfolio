@@ -2,7 +2,17 @@ const express = require("express");
 const helmet = require("helmet");
 
 const app = express();
-app.use(helmet({ dnsPrefetchControl: false, contentSecurityPolicy: false }));
+app.use(
+  helmet({
+    dnsPrefetchControl: false,
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "img-src": ["'self'", "https://i.ibb.co/"],
+      },
+    },
+  })
+);
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
