@@ -8,7 +8,10 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        "img-src": ["'self'", "https://i.ibb.co/"],
+        "img-src": ["'self'", "https://i.ibb.co/"], // Need this to have images shown (all images are on imgbb.com in one album)
+        // following tow lines allow loading of scripts and CSS from your server only
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'"],
       },
     },
   })
