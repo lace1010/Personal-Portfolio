@@ -7,21 +7,16 @@ app.use(
     dnsPrefetchControl: false,
     contentSecurityPolicy: {
       directives: {
-        // for fontAwesome and google fonts console.log said we need to add these links to defaultrc to allow indiviual icons and fonts
-        defaultSrc: [
-          "'self'",
-          "http://fonts.gstatic.com/s/notoserifsc/",
-          "https://use.fontawesome.com/releases/v5.8.1/webfonts/",
-        ],
+        defaultSrc: ["'self'"],
         "img-src": ["'self'", "https://i.ibb.co/"], // Need this to have images shown (all images are on imgbb.com in one album)
+
         // following tow lines allow loading of scripts and CSS from your server only using self. jquery link is to connect with jquery and font awesome link is for font awesome obviously.
         scriptSrc: ["'self'", "https://code.jquery.com/jquery-3.1.1.js"],
         styleSrc: [
           "'self'",
-          "http://fonts.googleapis.com/css",
-          "https://use.fontawesome.com/releases/v5.8.1/css/all.css",
+          "http://fonts.googleapis.com/", // Use base url not the full link we use in html
+          "https://use.fontawesome.com/",
         ],
-        // need to allow fontawesome still...
       },
     },
   })
