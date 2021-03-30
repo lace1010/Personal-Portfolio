@@ -215,10 +215,13 @@ a {
   width: 100%; /*Important because makes the image size the width of the grid-area
 				  it's in.*/
   height: auto;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 }
 
 .project-link {
-  border: 0.3rem solid black;
+  border: 0.2rem solid var(--main-black);
+  border-radius: 0.5rem;
   /* Makes it to where the gap between image and project title has same background color as project title so it looks like it is all the same size and fits evenly */
   background: var(--main-gray);
   display: grid;
@@ -229,6 +232,7 @@ a {
   display: flex;
   width: 100%; /*Makes background the size of the container. Thus, even with images.*/
   background: var(--main-gray);
+  border-radius: 0.5rem;
   justify-content: center;
   text-align: center;
   font-size: 2rem;
