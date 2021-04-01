@@ -7,7 +7,11 @@ app.use(
     dnsPrefetchControl: false,
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ["'self'", "https://use.fontawesome.com/"],
+        defaultSrc: [
+          "'self'",
+          "http://fonts.gstatic.com/s/notoserifsc/v8/", // The downloaded font we are using
+          "https://use.fontawesome.com/",
+        ],
         "img-src": ["'self'", "https://i.ibb.co/"], // Need this to have images shown (all images are on imgbb.com in one album)
 
         // following tow lines allow loading of scripts and CSS from your server only using self. jquery link is to connect with jquery and font awesome link is for font awesome obviously.
